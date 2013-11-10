@@ -22,4 +22,36 @@ public class TestJukebox extends TestCase {
     // now it's ready to use
     assertEquals("King Crimson -- Epitaph", mockJukebox.getCurrentSong());
   }
+  
+  public void testEasyMockDemo2() {
+	    expect(mockJukebox.numberOfSongs()).andReturn(4);
+	    // set up the mock object by calling methods you want to exist
+	    replay( mockJukebox_control );
+
+	    // now it's ready to use
+	    assertEquals(4, mockJukebox.numberOfSongs());
+	  }
+
+  public void testEasyMockDemo3() {
+	    expect(mockJukebox.isPlaying()).andReturn(false);
+	    // set up the mock object by calling methods you want to exist
+	    replay( mockJukebox_control );
+
+	    // now it's ready to use
+	    assertEquals(false, mockJukebox.isPlaying());
+	  }
+  
+  public void testEasyMockDemo4() {
+	    expect(mockJukebox.isPlaying()).andReturn(false);
+	    expect(mockJukebox.turnOn()).andReturn(true);
+	    expect(mockJukebox.isPlaying()).andReturn(true);
+	    // set up the mock object by calling methods you want to exist
+	    replay( mockJukebox_control );
+
+	    // now it's ready to use
+	    assertEquals(false, mockJukebox.isPlaying());
+	    assertEquals(true, mockJukebox.turnOn());
+	    assertEquals(true, mockJukebox.isPlaying());
+	  }
+  
 }
